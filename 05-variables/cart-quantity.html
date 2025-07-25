@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Cart Quantity</title>
+</head>
+
+<body>
+    <p>Cart Quantity</p>
+
+    <button id="show-quantity">Show Quantity</button>
+    <button id="add-to-cart">Add to Cart</button>
+    <button id="+2">+2</button>
+    <button id="+3">+3</button>
+    <button id="reset-cart">Reset Cart</button>
+
+    <script>
+        let showQuantity = 0;
+
+        //dom manipulation
+        document.getElementById("show-quantity").addEventListener("click", function () {
+            console.log(`Cart quantity: ${showQuantity}`);
+        });
+        document.getElementById("add-to-cart").addEventListener("click", function () {
+            showQuantity++;
+            console.log(`Cart quantity: ${showQuantity}`);
+        });
+        document.getElementById("+2").addEventListener("click", function () {
+            showQuantity += 2;
+            console.log(`Cart quantity: ${showQuantity}`);
+        });
+        document.getElementById("+3").addEventListener("click", function () {
+            showQuantity += 3;
+            console.log(`Cart quantity: ${showQuantity}`);
+        });
+        document.getElementById("reset-cart").addEventListener("click", function () {
+            showQuantity = 0;
+            console.log("Cart has been reset.");
+            console.log(`Cart quantity: ${showQuantity}`);
+        });
+    </script>
+</body>
+
+</html>
