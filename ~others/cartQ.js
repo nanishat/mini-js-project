@@ -1,41 +1,36 @@
-let showQuantity = 0;
-const maxQuantity = 10;
+let cartQuantity = 0;
+
+function updateCartQuantity(changes) {
+    if (cartQuantity + changes > 10) {
+        alert('The cart is full');
+        return;
+    } else if (cartQuantity + changes < 0) {
+        alert('Not enough items in the cart');
+        return;
+    } else {
+        cartQuantity += changes;
+        console.log(`Cart quantity: ${cartQuantity}`);
+    }
+}
 
 document.getElementById("add-to-cart").addEventListener("click", function () {
-
-    if (showQuantity + 1 > 10) {
-        console.log('The cart is full');
-    } else {
-        showQuantity++;
-        console.log(`Cart quantity: ${showQuantity}`);
-    }
+    updateCartQuantity(1);
 });
 
 document.getElementById("add-five").addEventListener("click", function () {
-    if (showQuantity + 5 < maxQuantity) {
-        showQuantity += 5;
-    } else {
-        showQuantity = maxQuantity;
-        console.log(`Partially added. Cart is now full`);
-    }
-    console.log(`Cart quantity: ${showQuantity}`);
+    updateCartQuantity(5);
 });
 
 document.getElementById("remove").addEventListener("click", function () {
-    if (showQuantity < 1) {
-        console.log('Not enough items in the cart')
-    } else {
-        showQuantity--;
-        console.log(`Cart quantity: ${showQuantity}`);
-    }
+    updateCartQuantity(-1);
 });
 
 document.getElementById("show-quantity").addEventListener("click", function () {
-    console.log(`Cart quantity: ${showQuantity}`);
+    console.log(`Cart quantity: ${cartQuantity}`);
 });
 
 document.getElementById("reset-cart").addEventListener("click", function () {
-    showQuantity = 0;
+    cartQuantity = 0;
     console.log("Cart has been reset.");
-    console.log(`Cart quantity: ${showQuantity}`);
+    console.log(`Cart quantity: ${cartQuantity}`);
 });
