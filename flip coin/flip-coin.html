@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Coin Flip</title>
+</head>
+
+<body>
+
+    <script>
+        const randomNumber = Math.random();
+        let result = '';
+        const guess = 'heads';
+
+        if (randomNumber < 0.5) {
+            result = 'heads';
+        } else {
+            result = 'tails';
+        }
+
+        //using ternary operation (for guessing)
+        console.log(guess === result ? 'You win!' : 'You lose!');
+    </script>
+</body>
+
+</html>
