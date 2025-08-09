@@ -7,20 +7,12 @@
 
 <body>
 
-    <script>
-        const randomNumber = Math.random();
-        let result = '';
-        const guess = 'heads';
+    <button class="game-play">heads</button>
+    <button class="game-play">tails</button>
+    <button id="clear">clear</button>
 
-        if (randomNumber < 0.5) {
-            result = 'heads';
-        } else {
-            result = 'tails';
-        }
+    <script src="flipCoin.js"></script>
 
-        //using ternary operation (for guessing)
-        console.log(guess === result ? 'You win!' : 'You lose!');
-    </script>
 </body>
 
 </html>
