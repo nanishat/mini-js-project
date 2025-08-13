@@ -1,5 +1,34 @@
 let cartQuantity = 0;
 
+const addToCart = document.querySelector(".js-add-to-cart");
+const addFive = document.querySelector(".js-add-five");
+const removeFromCart = document.querySelector(".js-remove");
+const showQuantity = document.querySelector(".js-show-quantity");
+const display = document.querySelector('.js-display');
+const resetCart = document.querySelector(".js-reset-cart");
+
+addToCart.addEventListener("click", () => {
+    updateCartQuantity(1);
+});
+
+addFive.addEventListener("click", () => {
+    updateCartQuantity(5);
+});
+
+removeFromCart.addEventListener("click", () => {
+    updateCartQuantity(-1);
+});
+
+showQuantity.addEventListener("click", function () {
+    display.innerHTML = `Cart quantity: ${cartQuantity}`;
+});
+
+resetCart.addEventListener("click", function () {
+    cartQuantity = 0;
+    display.innerHTML = `Cart quantity: ${cartQuantity}`;
+});
+
+
 function updateCartQuantity(changes) {
     if (cartQuantity + changes > 10) {
         alert('The cart is full');
@@ -9,28 +38,6 @@ function updateCartQuantity(changes) {
         return;
     } else {
         cartQuantity += changes;
-        console.log(`Cart quantity: ${cartQuantity}`);
+        display.innerHTML = `Cart quantity: ${cartQuantity}`;
     }
 }
-
-document.getElementById("add-to-cart").addEventListener("click", function () {
-    updateCartQuantity(1);
-});
-
-document.getElementById("add-five").addEventListener("click", function () {
-    updateCartQuantity(5);
-});
-
-document.getElementById("remove").addEventListener("click", function () {
-    updateCartQuantity(-1);
-});
-
-document.getElementById("show-quantity").addEventListener("click", function () {
-    console.log(`Cart quantity: ${cartQuantity}`);
-});
-
-document.getElementById("reset-cart").addEventListener("click", function () {
-    cartQuantity = 0;
-    console.log("Cart has been reset.");
-    console.log(`Cart quantity: ${cartQuantity}`);
-});
