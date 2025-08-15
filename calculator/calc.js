@@ -6,25 +6,28 @@ if (calculation) {
     displayPanel.innerHTML = calculation;
 }
 
-const buttons = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' + ', ' - ', ' * ', ' / ', ' . '];
+//updated version of code, which selecting all those button.
+//got ridden of all those button ids
 
-buttons.forEach((char) => {
-    document.getElementById(char).addEventListener("click", () => {
-        calculation += char;
-        displayPanel.innerHTML = calculation;
+document.querySelectorAll('.calc-btn')
+    .forEach(btn => {
+        btn.addEventListener('click', () => {
+            const value = btn.dataset.value;
+            calculation = calculation + value;
+            displayPanel.innerHTML = calculation;
+        });
     });
-});
 
-document.getElementById("equal").addEventListener("click", () => {
-    calculation = (eval(calculation));
+document.querySelector(".equal").addEventListener("click", () => {
+    calculation = eval(calculation);
     displayPanel.innerHTML = calculation;
     saveCalculation();
 });
 
-document.getElementById("clear").addEventListener("click", () => {
+document.querySelector(".clear").addEventListener("click", () => {
     calculation = '';
     localStorage.removeItem('calculation');
-    displayPanel.innerHTML = 'Display cleared.';
+    displayPanel.innerHTML = '...';
 });
 
 function saveCalculation() {
