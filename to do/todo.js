@@ -10,6 +10,22 @@ document.querySelector('.js-add-btn')
 function renderTodoList() {
     let todoListHTML = ''; //an empty string to display HTML through JS
 
+    //replacing for loop with foreach method
+    todoList.forEach(function (todoObject, index) {
+        const { name, dueDate } = todoObject;
+        const html = `
+            <div>${name}</div>
+            <div>${dueDate}</div>
+            <button onclick="
+                todoList.splice(${index},1);
+                localStorage.setItem('todoKey', JSON.stringify(todoList));
+                renderTodoList();
+            " class="delete-btn">Delete</button>        
+        `; //generated HTML 
+        todoListHTML += html;
+    });
+
+    /*
     for (let i = 0; i < todoList.length; i++) {
         const todoObject = todoList[i];
         //const name = todoObject.name;
@@ -29,6 +45,7 @@ function renderTodoList() {
         `; //generated HTML 
         todoListHTML += html;
     }
+    */
     document.querySelector('.js-todo-list')
         .innerHTML = todoListHTML;
 }
