@@ -11,43 +11,28 @@ function renderTodoList() {
     let todoListHTML = ''; //an empty string to display HTML through JS
 
     //replacing for loop with foreach method
-    todoList.forEach(function (todoObject, index) {
+    todoList.forEach((todoObject) => {
+        //used destructured form of an object 
         const { name, dueDate } = todoObject;
         const html = `
             <div>${name}</div>
             <div>${dueDate}</div>
-            <button onclick="
-                todoList.splice(${index},1);
-                localStorage.setItem('todoKey', JSON.stringify(todoList));
-                renderTodoList();
-            " class="delete-btn">Delete</button>        
+            <button class="js-delete-btn delete-btn">Delete</button>        
         `; //generated HTML 
         todoListHTML += html;
     });
 
-    /*
-    for (let i = 0; i < todoList.length; i++) {
-        const todoObject = todoList[i];
-        //const name = todoObject.name;
-        //const dueDate = todoObject.dueDate;
-        const { name, dueDate } = todoObject;
-
-        const html = `
-
-            <div>${name}</div>
-            <div>${dueDate}</div>
-            <button onclick="
-                todoList.splice(${i},1);
-                localStorage.setItem('todoKey', JSON.stringify(todoList));
-                renderTodoList();
-            " class="delete-btn">Delete</button>        
-        
-        `; //generated HTML 
-        todoListHTML += html;
-    }
-    */
     document.querySelector('.js-todo-list')
         .innerHTML = todoListHTML;
+
+    (document.querySelectorAll('.js-delete-btn'))
+        .forEach((deleteButton, index) => {
+            deleteButton.addEventListener('click', () => {
+                todoList.splice(index, 1);
+                localStorage.setItem('todoKey', JSON.stringify(todoList));
+                renderTodoList();
+            });
+        });
 }
 
 function addTodo() {
