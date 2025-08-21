@@ -25,7 +25,7 @@ function renderTodoList() {
     document.querySelector('.js-todo-list')
         .innerHTML = todoListHTML;
 
-    (document.querySelectorAll('.js-delete-btn'))
+    document.querySelectorAll('.js-delete-btn')
         .forEach((deleteButton, index) => {
             deleteButton.addEventListener('click', () => {
                 todoList.splice(index, 1);
